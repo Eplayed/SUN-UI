@@ -1,0 +1,71 @@
+{
+  "name": "SUN-UI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz",
+    "dev": "dumi dev",
+    "build:site": "rimraf doc-site && dumi build",
+    "start": "npm run dev",
+    "build:doc": "rimraf doc-site && docz build",
+    "preview:site": "npm run build:site && serve doc-site"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eplayed/SUN-UI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eplayed/SUN-UI/issues"
+  },
+  "homepage": "https://github.com/Eplayed/SUN-UI#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@umijs/fabric": "^2.6.2",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "dumi": "^1.1.23",
+    "gatsby-plugin-less": "^5.9.0",
+    "husky": "^7.0.1",
+    "less": "^4.1.1",
+    "lint-staged": "^11.0.1",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "serve": "^12.0.0",
+    "typescript": "^4.3.5"
+  },
+  "lint-staged": {
+    "components/**/*.ts?(x)": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "components/**/*.less": [
+      "stylelint --syntax less --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  }
+}
